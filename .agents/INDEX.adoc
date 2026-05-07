@@ -1,0 +1,38 @@
+= INDEX — Planner Gradle
+:toc:
+
+_Regles absolues_ : voir `AGENT.adoc`
+_DAG_ : N2 — Plugin Gradle de planification (Regle 4bis)
+
+_Derniere mise a jour_ : 2026-05-07
+_Session en cours_ : 0 — Bootstrap skeleton Gradle
+
+'''
+== REGLES ABSOLUES
+
+=== 1. COMMITS/GIT — INTERDICTION FORMELLE sans permission
+=== 2. PUBLISH TO MAVEN LOCAL — après toute modif de code source
+=== 3. DAG N2 — importable par N3 engine, jamais importe N3
+=== 4. PROCEDURE DE FIN DE SESSION — 6 ETAPES OBLIGATOIRES
+
+'''
+== Sessions
+
+|===
+| # | Date | Type | Sujet
+| 0 | 2026-05-07 | init | Bootstrap skeleton planner-gradle
+|===
+
+'''
+== Roadmap
+
+|===
+| EPIC | Description | Statut | Priorite
+| PLN-0 | Bootstrap skeleton Gradle (build, settings, .agents/) | TERMINE | P0
+| PLN-1 | data classes Plan + PlanningContext | TERMINE | P0
+| PLN-2 | Task decomposeIntention (stub MVP) | TERMINE | P0
+| PLN-3 | Intégration LangChain4j + DeepSeek-v4-pro | A FAIRE | P0
+| PLN-4 | RAG sur specs existantes pour contexte LLM | A FAIRE | P1
+| PLN-5 | Dogfooding — planifier son propre backlog | A FAIRE | P1
+| PLN-6 | Publication Gradle Plugin Portal | A FAIRE | P2
+|===

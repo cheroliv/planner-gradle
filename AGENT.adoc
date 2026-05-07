@@ -1,0 +1,19 @@
+= AGENT.adoc — Planner Gradle
+
+_Produit_ : Planning Expert comme plugin Gradle
+_Licence_ : Apache 2.0 (OSS)
+_DAG_ : N2 — Plugin Gradle de planification
+
+== Principe
+
+Le plugin `planner` est le capital fixe du Planning Expert. Il encapsule LangChain4j + vecteur composite + philosophie agile JIT pour decomposer une intention en plan d'execution.
+
+== Invocation
+
+  ./gradlew decomposeIntention -Pintention="description du besoin"
+
+Sortie : stdout structure au format unifie `[PLAN] [EPIC] [US] [TASK]`.
+
+== Ne remplace PAS opencode
+
+Le plugin est invoque PAR opencode (via tool use). Le Planning Expert est le comportement, le plugin planner est le capital fixe.

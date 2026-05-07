@@ -1,0 +1,116 @@
+import org.gradle.api.JavaVersion.VERSION_24
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+
+plugins {
+    signing
+    `java-library`
+    `maven-publish`
+    `java-gradle-plugin`
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.publish)
+    kotlin("plugin.serialization") version libs.versions.kotlin.get()
+}
+
+group = "com.cheroliv"
+version = libs.plugins.planner.get().version
+kotlin.jvmToolchain(VERSION_24.ordinal)
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation(kotlin("stdlib-jdk8"))
+    implementation(gradleApi())
+    implementation(gradleKotlinDsl())
+    implementation(libs.kotlinx.serialization.json)
+
+    testImplementation(kotlin("test-junit5"))
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+    jvmArgs("-XX:+EnableDynamicAgentLoading")
+    testLogging {
+        events("passed", "skipped", "failed")
+        showStandardStreams = true
+        exceptionFormat = FULL
+    }
+}
+
+gradlePlugin {
+    website.set("https://github.com/cheroliv/planner-gradle/")
+    vcsUrl.set("https://github.com/cheroliv/planner-gradle.git")
+
+    plugins {
+        create("planner") {
+            id = libs.plugins.planner.get().pluginId
+            implementationClass = "planning.PlanningPlugin"
+            displayName = "Planner Plugin"
+            description = """
+                Planning Expert — decomposes a high-level intention (natural language)
+                into a structured execution plan (EPICs → User Stories → Gradle tasks)
+                via LLM (LangChain4j + DeepSeek-v4-pro). Outputs structured stdout.
+            """.trimIndent()
+            tags.set(listOf("planning", "llm", "langchain4j", "agile", "backlog"))
+        }
+    }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        withType<MavenPublication> {
+            if (name == "pluginMaven") {
+                pom {
+                    name.set("Planner Gradle Plugin")
+                    description.set(gradlePlugin.plugins.getByName("planner").description)
+                    url.set(gradlePlugin.website.get())
+                    licenses {
+                        license {
+                            name.set("The Apache License, Version 2.0")
+                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
+                    }
+                    developers {
+                        developer {
+                            id.set("cheroliv")
+                            name.set("cheroliv")
+                            email.set("cheroliv.developer@gmail.com")
+                        }
+                    }
+                    scm {
+                        connection.set(gradlePlugin.vcsUrl.get())
+                        developerConnection.set(gradlePlugin.vcsUrl.get())
+                        url.set(gradlePlugin.vcsUrl.get())
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "sonatype"
+            url = (if (version.toString().endsWith("-SNAPSHOT"))
+                uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            else uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"))
+            credentials {
+                username = project.findProperty("ossrhUsername") as? String
+                password = project.findProperty("ossrhPassword") as? String
+            }
+        }
+        mavenCentral()
+    }
+}
+
+signing {
+    val isReleaseVersion = !version.toString().endsWith("-SNAPSHOT")
+    if (isReleaseVersion) sign(publishing.publications)
+    useGpgCmd()
+}

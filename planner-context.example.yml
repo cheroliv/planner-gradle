@@ -1,0 +1,13 @@
+intention: "génère le plugin capsule vidéo"
+
+specs:
+  - "AUGMENTED_CONTEXT_PIPELINE.adoc"
+  - "PLANNING_EXPERT_ONTOLOGY.adoc"
+  - "PIPELINE_MENTAL_MAP.adoc"
+
+# Expected LLM output contract:
+# [PLAN] title="génère le plugin capsule vidéo" totalPoints=21 estimatedSessions=15-25
+# [EPIC] name="CAP-0" description="Skeleton Gradle" points=3
+# [EPIC] name="CAP-1" description="TTS integration" points=8
+# [EPIC] name="CAP-2" description="FFmpeg concat" points=5
+# [EPIC] name="CAP-3" description="Configuration DSL" points=5
