@@ -1,0 +1,23 @@
+= COMPLETED_TASKS_ARCHIVE — Mai 2026
+
+'''
+== PLN-7 — Tests unitaires pipeline LLM (Session 002)
+
+- [x] Rendre buildPrompt internal (testable)
+- [x] IntentionPlannerTest : 7 tests (prompt, JSON contract, specs, ordering)
+- [x] LLMResponseTest : 5 tests (mapping complet, multiple epics, empty, order)
+- [x] OllamaBridgeTest : 2 tests (non-null, model name)
+- [x] DecomposeIntentionPluginTest : 3 tests TestKit (registration, group, stdout)
+- [x] Total 24/24 PASS (21 unit + 3 TestKit)
+
+== PLN-4 — RAG sur specs existantes (Session 001)
+
+- [x] Implémenter SpecReader : lit fichiers .adoc depuis dossier specs
+- [x] Token budget ~2000 tokens (8000 caracteres) avec troncature
+- [x] Modifier DecomposeIntentionTask : @Optional @InputDirectory specsDir
+- [x] Modifier IntentionPlanner.plan() : specContents parameter
+- [x] Modifier buildPrompt : injection contenu specs via SpecReader.toPromptContext()
+- [x] Mettre a jour PlanningPlugin : specsDir configure via gradle property
+- [x] Tests unitaires SpecReaderTest : 6 tests PASS
+- [x] Test manuel decomposeIntention -PspecsDir OK
+- [x] publishToMavenLocal

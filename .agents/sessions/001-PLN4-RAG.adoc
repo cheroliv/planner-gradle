@@ -1,0 +1,38 @@
+= Session 001 — PLN-4 RAG sur specs existantes
+:date: 2026-05-07
+:epic: PLN-4
+:score: 10/10
+
+== Objectif
+
+Enrichir le prompt LLM avec le contenu reel des fichiers de specification
+`.adoc` pour fournir du contexte RAG (Retrieval-Augmented Generation) au
+modele DeepSeek-v4-pro.
+
+== Livrables
+
+- SpecReader : lecture de fichiers `.adoc` depuis un dossier, token budget
+  ~2000 tokens (8000 caracteres), troncature au-dela
+- SpecContent data class : fileName + text
+- DecomposeIntentionTask modifiee : `@Optional @InputDirectory specsDir`
+- IntentionPlanner.plan() accepte `List<SpecReader.SpecContent>`
+- buildPrompt injecte le contenu des specs via SpecReader.toPromptContext()
+- PlanningPlugin expose la property Gradle `specsDir` (optionnelle)
+- 6 tests unitaires SpecReader, plus PlanTest existant → 7/7 PASS
+- Test manuel : `./gradlew decomposeIntention -Pintention="..." -PspecsDir="specs"` OK
+
+== Fichiers modifies/crees
+
+- CREATED: `planner-plugin/src/main/kotlin/planning/SpecReader.kt`
+- MODIFIED: `planner-plugin/src/main/kotlin/planning/IntentionPlanner.kt`
+- MODIFIED: `planner-plugin/src/main/kotlin/planning/DecomposeIntentionTask.kt`
+- MODIFIED: `planner-plugin/src/main/kotlin/planning/PlanningPlugin.kt`
+- CREATED: `planner-plugin/src/test/kotlin/planning/SpecReaderTest.kt`
+
+== Decisions
+
+- SpecReader utilise une estimation grossiere 4 chars/token pour le budget
+- `@InputDirectory` impose que le dossier existe; specsDir n'est set que si
+  la property `-PspecsDir` est fournie
+- `context.specs: List<String>` dans PlanningContext n'est plus utilise par
+  buildPrompt — remplace par SpecContent avec contenu complet

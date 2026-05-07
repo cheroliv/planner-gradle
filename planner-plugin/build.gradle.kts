@@ -25,6 +25,10 @@ dependencies {
     implementation(gradleApi())
     implementation(gradleKotlinDsl())
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.langchain4j.core)
+    implementation(libs.langchain4j.ollama)
+    implementation(libs.jackson.databind)
+    implementation(libs.jackson.kotlin)
 
     testImplementation(kotlin("test-junit5"))
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

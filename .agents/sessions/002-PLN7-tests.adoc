@@ -1,0 +1,44 @@
+= Session 002 — PLN-7 Tests unitaires pipeline LLM
+:date: 2026-05-07
+:epic: PLN-7
+:score: 10/10
+
+== Objectif
+
+Ecrire les tests unitaires et d'integration pour tout le pipeline de planification
+LLM : IntentionPlanner (buildPrompt), LLMResponse (toPlan), OllamaBridge (chatModel),
+et DecomposeIntentionTask via TestKit.
+
+== Livrables
+
+- IntentionPlanner.buildPrompt rendu internal (etait private) pour testabilite
+- IntentionPlannerTest (7 tests PASS) :
+  - intention dans le prompt
+  - structure JSON contract complete
+  - regles EPIC naming
+  - regle output-only-JSON
+  - sans specs → pas de section specs
+  - avec specs → contenu injecte (nom fichier + texte)
+  - ordre des sections : intention < specs < JSON contract
+- LLMResponseTest (5 tests PASS) :
+  - toPlan mappe title/totalPoints/estimatedSessions
+  - single epic avec tous niveaux (epic→us→tasks)
+  - multiple epics
+  - empty user stories
+  - preservation ordre des champs
+- OllamaBridgeTest (2 tests PASS) :
+  - chatModel() non null
+  - toString contient le model name
+- DecomposeIntentionPluginTest (3 tests PASS via TestKit) :
+  - task decomposeIntention enregistree dans groupe planning
+  - stdout contient [PLAN] avec intention valide
+  - pas de crash sans intention explicite
+- Total : 24/24 ALL PASS
+
+== Fichiers modifies/crees
+
+- MODIFIED: planner-plugin/src/main/kotlin/planning/IntentionPlanner.kt (private→internal)
+- CREATED: planner-plugin/src/test/kotlin/planning/IntentionPlannerTest.kt
+- CREATED: planner-plugin/src/test/kotlin/planning/LLMResponseTest.kt
+- CREATED: planner-plugin/src/test/kotlin/planning/OllamaBridgeTest.kt
+- CREATED: planner-plugin/src/test/kotlin/planning/DecomposeIntentionPluginTest.kt

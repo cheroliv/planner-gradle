@@ -1,0 +1,12 @@
+= SESSION_PROCEDURE — planner-gradle
+
+== Procedure de Fin de Session — 6 Etapes Obligatoires
+
+. *Rapport de session* — Creer `.agents/sessions/NNN-sujet.adoc`
+. *Mise a jour PROMPT_REPRISE.adoc* — Contexte de reprise pour la session suivante (max 70 lignes)
+. *Mise a jour INDEX.adoc* — Mettre a jour numero de session, roadmap, etat des EPICs
+. *Mise a jour SESSIONS_HISTORY.adoc* — Ajouter l'entree dans l'historique
+. *Archivage COMPLETED_TASKS_ARCHIVE.adoc* — Archiver les taches terminees
+. *Verification* — `git status`, grep secrets, `./gradlew :planner-plugin:compileKotlin`
+
+Aucune etape ne peut etre marquee OK si le fichier n'a pas ete effectivement modifie et verifie.

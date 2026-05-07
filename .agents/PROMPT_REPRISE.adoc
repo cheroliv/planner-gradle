@@ -1,0 +1,29 @@
+= PROMPT_REPRISE — planner-gradle
+
+_Session suivante_ : 003 — PLN-5 Dogfooding
+
+'''
+== Contexte des sessions 001-002
+
+PLN-0→PLN-4 et PLN-7 sont TERMINE :
+- Pipeline complet : decomposeIntention → IntentionPlanner → LangChain4j → Jackson → StdoutFormatter
+- RAG specs : SpecReader lit .adoc, injecte dans prompt, budget ~2000 tokens
+- Tests : 24/24 PASS (IntentionPlanner, LLMResponse, OllamaBridge, SpecReader, TestKit)
+
+'''
+== Mission session 003 — PLN-5 Dogfooding
+
+*Objectif* : Utiliser le plugin planner-gradle pour planifier son propre
+backlog de taches restantes (PLN-5, PLN-6).
+
+*Priorite* : P1
+*Depend de* : PLN-7 (TERMINE)
+
+*Sous-taches* :
+1. Creer un fichier specs/ avec les fichiers .agents/INDEX.adoc et AGENT.adoc
+   comme references
+2. Lancer decomposer intention avec -PspecsDir= pour planifier :
+   - "dogfooder planner-gradle sur son propre backlog"
+   - "publier planner-plugin sur Gradle Plugin Portal"
+3. Comparer le plan genere par le LLM avec la roadmap existante dans INDEX.adoc
+4. Documenter les ecarts eventuels dans un fichier d'analyse
