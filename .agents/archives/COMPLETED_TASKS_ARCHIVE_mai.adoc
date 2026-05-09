@@ -21,3 +21,13 @@
 - [x] Tests unitaires SpecReaderTest : 6 tests PASS
 - [x] Test manuel decomposeIntention -PspecsDir OK
 - [x] publishToMavenLocal
+
+== PLN-5 — Dogfooding (Session 003)
+
+- [x] Creer specs/01-project-overview.adoc (architecture, stack, invocation)
+- [x] Creer specs/02-roadmap.adoc (statut EPICs + tests)
+- [x] Creer specs/03-publication.adoc (exigences publication)
+- [x] decomposeIntention : "dogfooder planner-gradle sur son propre backlog" → 3 EPICs, 18 pts
+- [x] decomposeIntention : "publier planner-plugin sur Gradle Plugin Portal" → 3 EPICs, 16 pts
+- [x] Analyse comparative : specs/04-dogfooding-analysis.adoc
+- [x] Fusioner DF/PUB en PLN-5/PLN-6 dans roadmap

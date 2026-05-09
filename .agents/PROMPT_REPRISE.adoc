@@ -1,29 +1,28 @@
 = PROMPT_REPRISE — planner-gradle
 
-_Session suivante_ : 003 — PLN-5 Dogfooding
+_Session suivante_ : 004 — PLN-6 Publication Gradle Plugin Portal
 
 '''
-== Contexte des sessions 001-002
+== Contexte de la session 003
 
-PLN-0→PLN-4 et PLN-7 sont TERMINE :
-- Pipeline complet : decomposeIntention → IntentionPlanner → LangChain4j → Jackson → StdoutFormatter
-- RAG specs : SpecReader lit .adoc, injecte dans prompt, budget ~2000 tokens
-- Tests : 24/24 PASS (IntentionPlanner, LLMResponse, OllamaBridge, SpecReader, TestKit)
+PLN-5 Dogfooding TERMINÉ :
+- `specs/` créé avec 3 références (overview, roadmap, publication)
+- 2 x decomposeIntention exécutées → 2 plans LLM (DF-0→DF-2, PUB-0→PUB-2)
+- Analyse comparative dans `specs/04-dogfooding-analysis.adoc`
+- Dogfooding validé : le plugin planifie correctement
+
+PLN-0→PLN-5 et PLN-7 sont TERMINÉ.
 
 '''
-== Mission session 003 — PLN-5 Dogfooding
+== Mission session 004 — PLN-6 Publication
 
-*Objectif* : Utiliser le plugin planner-gradle pour planifier son propre
-backlog de taches restantes (PLN-5, PLN-6).
+*Objectif* : Publier le plugin sur Gradle Plugin Portal.
 
-*Priorite* : P1
-*Depend de* : PLN-7 (TERMINE)
+*Sous-tâches* :
+. Vérifier credentials (GPG key, Sonatype API key)
+. `./gradlew :planner-plugin:publishToMavenLocal` (prérequis)
+. `./gradlew :planner-plugin:publishAllPublicationsToSonatypeRepository`
+. `./gradlew :planner-plugin:publishPlugins`
+. Vérifier découvrabilité sur https://plugins.gradle.org/
 
-*Sous-taches* :
-1. Creer un fichier specs/ avec les fichiers .agents/INDEX.adoc et AGENT.adoc
-   comme references
-2. Lancer decomposer intention avec -PspecsDir= pour planifier :
-   - "dogfooder planner-gradle sur son propre backlog"
-   - "publier planner-plugin sur Gradle Plugin Portal"
-3. Comparer le plan genere par le LLM avec la roadmap existante dans INDEX.adoc
-4. Documenter les ecarts eventuels dans un fichier d'analyse
+*Attention* : Publication nécessite credentials réels → intervention humaine nécessaire.

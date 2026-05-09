@@ -4,9 +4,8 @@
 _Regles absolues_ : voir `AGENT.adoc`
 _DAG_ : N2 — Plugin Gradle de planification (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-05-07
-_Session en cours_ : 003 — PLN-5 Dogfooding
-_Session terminee_ : 002 — PLN-7 Tests unitaires
+_Derniere mise a jour_ : 2026-05-09
+_Session terminee_ : 003 — PLN-5 Dogfooding
 
 '''
 == REGLES ABSOLUES
@@ -25,6 +24,7 @@ _Session terminee_ : 002 — PLN-7 Tests unitaires
 | 000 | 2026-05-07 | init+feat | Bootstrap + PLN-0→PLN-3 : skeleton, data classes, stub, LangChain4j+DeepSeek-v4-pro, OllamaBridge | 10/10
 | 001 | 2026-05-07 | feat | PLN-4 — RAG sur specs existantes : SpecReader, SpecContent, token budget 2000, spec injection dans buildPrompt | 10/10
 | 002 | 2026-05-07 | test | PLN-7 — Tests unitaires : IntentionPlanner(7), LLMResponse(5), OllamaBridge(2), TestKit(3) = 24/24 PASS | 10/10
+| 003 | 2026-05-09 | feat | PLN-5 — Dogfooding : specs/ creés, 2x decomposeIntention, analyse comparative | 10/10
 |===
 
 '''
@@ -37,7 +37,7 @@ _Session terminee_ : 002 — PLN-7 Tests unitaires
 | PLN-2 | Task decomposeIntention (stub MVP) | ✅ TERMINE | P0
 | PLN-3 | Intégration LangChain4j + DeepSeek-v4-pro (OllamaBridge, IntentionPlanner, LLMResponse, parsing Jackson, retry 3x) | ✅ TERMINE | P0
 | PLN-4 | RAG sur specs existantes pour contexte LLM | ✅ TERMINE | P1
-| PLN-5 | Dogfooding — planifier son propre backlog | A FAIRE | P1
+| PLN-5 | Dogfooding — planifier son propre backlog | ✅ TERMINE | P1
 | PLN-6 | Publication Gradle Plugin Portal | A FAIRE | P2
 | PLN-7 | Tests : IntentionPlanner, OllamaBridge, LLMResponse.toPlan(), TestKit | ✅ TERMINE | P1
 |===

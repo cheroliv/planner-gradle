@@ -1,0 +1,25 @@
+= Gradle Plugin Portal — Publication Requirements
+
+== Current Publication State
+
+The `planner-plugin/build.gradle.kts` already has:
+- `signing` plugin configured (uses gpg-agent with `useGpgCmd()`)
+- `maven-publish` with `sonatype` repository configured
+- `com.gradleup.publish` plugin for Gradle Plugin Portal
+- `java-gradle-plugin` with metadata (website, vcsUrl, id, implementationClass, description, tags)
+- Sources and Javadoc JARs configured
+
+== What Remains for PLN-6
+
+- Verify publication credentials are valid (sonatype API key, GPG key registered)
+- Publish to Gradle Plugin Portal via `./gradlew :planner-plugin:publishPlugins`
+- Publish to Maven Central via `./gradlew :planner-plugin:publishAllPublicationsToSonatypeRepository`
+- Verify the plugin is discoverable at https://plugins.gradle.org/plugin/com.cheroliv.planner
+- Create a release tag and GitHub release with changelog
+
+== Dependencies
+
+- All code EPICs (PLN-0→PLN-5, PLN-7) must be completed and stable
+- Plugin must have been dogfooded (PLN-5) and validated
+- GPG key must be registered on keyservers
+- Sonatype JIRA ticket must be approved (groupId com.cheroliv already claimed)

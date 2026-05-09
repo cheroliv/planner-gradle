@@ -1,0 +1,26 @@
+= planner-gradle — Project Overview
+
+_DAG Level_ : N2
+_Type_ : Gradle Plugin
+_Stack_ : LangChain4j, Jackson, Ollama (DeepSeek-v4-pro)
+_Licence_ : Apache 2.0
+
+== Purpose
+
+The `planner` plugin encapsulates a Planning Expert that decomposes a natural language
+intention into a structured execution plan (EPICs → User Stories → Tasks) via LLM.
+
+== Invocation
+
+  ./gradlew decomposeIntention -Pintention="description" [-PspecsDir=specs/]
+
+Output: stdout in structured format `[PLAN] [EPIC] [US] [TASK]`.
+
+== Architecture
+
+- `DecomposeIntentionTask` : Gradle task entry point
+- `IntentionPlanner` : builds prompt, calls OllamaBridge, retries 3x, parses JSON → Plan
+- `SpecReader` : reads .adoc specs from directory, injects into prompt (token budget ~2000)
+- `OllamaBridge` : LangChain4j chat model wrapper for local Ollama/DeepSeek-v4-pro
+- `StdoutFormatter` : formats Plan for human-readable stdout
+- `Plan` / `PlanningContext` : domain data classes

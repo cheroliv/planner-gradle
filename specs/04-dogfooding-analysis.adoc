@@ -1,0 +1,71 @@
+= PLN-5 - Dogfooding Analysis — LLM Plan vs INDEX.adoc Roadmap
+
+_Date_ : 2026-05-09
+_Session_ : 003
+
+== Plans générés par le LLM
+
+=== Plan 1 — Dogfooding (DF-0→DF-2)
+[cols="2,2,2"]
+|===
+| EPIC | Description | Points
+| DF-0 | Prepare Dogfooding Environment | 5
+| DF-1 | Execute Planning Plugin | 8
+| DF-2 | Validate and Integrate Results | 5
+| *Total* | | *18*
+|===
+
+=== Plan 2 — Publication (PUB-0→PUB-2)
+[cols="2,2,2"]
+|===
+| EPIC | Description | Points
+| PUB-0 | Pre-publication Validation and Credentials Check | 5
+| PUB-1 | Execute Publication to Maven Central and Plugin Portal | 8
+| PUB-2 | Release Tagging and Final Verification | 3
+| *Total* | | *16*
+|===
+
+== Roadmap existante (INDEX.adoc)
+
+[cols="2,2"]
+|===
+| EPIC | Description
+| PLN-5 | Dogfooding — planifier son propre backlog
+| PLN-6 | Publication Gradle Plugin Portal
+|===
+
+== Tableau comparatif
+
+=== Concordances
+
+- Le LLM a bien identifié **2 thèmes distincts** : dogfooding local + publication externe
+- La publication (PUB-0→PUB-2) couvre exactement la chaîne de valeur de PLN-6 : credentials → Maven Central → Portal → tag/release
+- Le LLM a capté le détail `03-publication.adoc` des specs (signing, Sonatype, Portal)
+
+=== Écarts notables
+
+. *Granularité* : le LLM subdivise 3 EPICs par intention (DF-0→DF-2) quand la roadmap n'en prévoit qu'1 par thème (PLN-5, PLN-6). Soit plus fin que l'humain.
+
+. *Nommage* : DF/PUB vs PLN. La roadmap utilise le préfixe PLN (du module), le LLM contextualise par thème (DF pour dogfooding, PUB pour publication). Le prompt `01-project-overview.adoc` ne fixait pas le préfixe `PLN`.
+
+. *Points* : 18+16=34 points estimés pour 2 EPICs roadmap. Ratio cohérent (~17 points/EPIC), dans la norme des sprints précédents (PLN-0→PLN-4 cumulés ~25 pts sur 4 EPICs).
+
+. *Test coverage* : PUB-0 évoque `./gradlew test` comme prérequis. PLN-7 est déjà TERMINÉ (24/24 PASS), donc le LLM ne \"sait\" pas que cette tache est déjà faite — il la remet dans le plan. C'est un **faux-positif RAG** : le contexte est injecté mais le LLM génère quand même un check de tests comme prérequis.
+
+. *Tâches humaines* : DF-2 ajoute \"Manual review of generated plan structure\", ce qui est non automatisable. Le LLM reconnaît la limite du système.
+
+. *Dépendances inter-thèmes* : PUB-0-US-1 mentionne dogfooding comme prérequis de publication, ce que la roadmap actuelle ne formalise pas explicitement mais qui est logique.
+
+== Conclusions
+
+- Le LLM a produit un plan **plus détaillé** que la roadmap (3 EPICs vs 1 par intention), ce qui est cohérent avec le rôle de Planning Expert
+- Aucune « erreur » bloquante : tous les écarts sont des enrichissements ou des nuances de granularité
+- Les 2 plans peuvent fusionner en une roadmap unifiée PLN-5 + PLN-6 avec 6 EPICs (3 DF, 3 PUB)
+- Le dogfooding est un succès : le plugin a planifié son propre backlog
+
+== Recommandation
+
+. Fusionner DF-0+DF-1+DF-2 en **PLN-5** (garder la roadmap comme autorité)
+. Fusionner PUB-0+PUB-1+PUB-2 en **PLN-6** 
+. Retirer de PUB-0 les tasks de test déjà couvertes par PLN-7
+. Le LLM pourra servir à raffiner PLN-6 en session N+1

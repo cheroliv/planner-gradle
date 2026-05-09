@@ -88,3 +88,27 @@ Historique des sessions de developpement du plugin planner-gradle.
 - TestKit peut appeler LLM en integration (timeout 5min)
 - buildPrompt internal (pas public) car c'est un detail d'implementation
 - assertTrue en kotlin.test prend (Boolean, String) ou (String, ()→Boolean)
+
+'''
+== Session 003 — PLN-5 Dogfooding
+
+*Date* : 2026-05-09
+*Type* : feat
+*Modele* : deepseek-v4-pro (via opencode + Ollama)
+*Score* : 10/10
+
+*Objectif* :
+- Utiliser le plugin planner-gradle pour planifier son propre backlog restant (PLN-5, PLN-6)
+
+*Livrables* :
+- `specs/` cree avec 3 references (01-project-overview, 02-roadmap, 03-publication)
+- decomposeIntention n°1 : "dogfooder planner-gradle sur son propre backlog" → 3 EPICs DF-0→DF-2, 18 points
+- decomposeIntention n°2 : "publier planner-plugin sur Gradle Plugin Portal" → 3 EPICs PUB-0→PUB-2, 16 points
+- Analyse comparative LLM vs roadmap : `specs/04-dogfooding-analysis.adoc`
+- Dogfooding valide : le plugin planifie correctement, ecarts documentes
+
+*Decisions cles* :
+- Plans LLM plus granulaires que roadmap humaine (3 EPICs/intention vs 1)
+- Faux-positif RAG : LLM propose tests deja couverts par PLN-7
+- Publication plan couvre bien la chaine signing → Sonatype → Portal → tag
+- Recommandation : fusionner DF/PUB en PLN-5/PLN-6 pour coherence roadmap

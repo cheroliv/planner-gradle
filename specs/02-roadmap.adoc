@@ -1,0 +1,26 @@
+= planner-gradle — Current Roadmap Status
+
+== Completed EPICs
+
+- PLN-0 : Bootstrap skeleton (build.gradle.kts, settings, .agents/)
+- PLN-1 : Domain data classes (Plan, PlanningContext)
+- PLN-2 : decomposeIntention task stub (MVP without LLM)
+- PLN-3 : LangChain4j + DeepSeek-v4-pro integration (OllamaBridge, IntentionPlanner, LLMResponse, Jackson parsing with 3 retries)
+- PLN-4 : RAG specs (SpecReader reads .adoc from specsDir/, injects into prompt, token budget ~2000)
+- PLN-7 : Unit tests 24/24 PASS (IntentionPlanner, OllamaBridge, LLMResponse.toPlan(), TestKit)
+
+== Remaining EPICs
+
+- PLN-5 : Dogfooding — use the planner plugin to plan its own remaining backlog (this EPIC itself plus PLN-6)
+- PLN-6 : Publication on Gradle Plugin Portal (signing, Sonatype, portal submission)
+
+== Test Status
+
+24 unit tests, all passing. Tests cover:
+- IntentionPlanner.buildPrompt() (7 tests)
+- LLMResponse.toPlan() (5 tests)
+- OllamaBridge model instantiation (2 tests)
+- SpecReader (2 tests)
+- DecomposeIntentionTask via TestKit (3 tests)
+- StdoutFormatter (2 tests)
+- Integration: full pipeline TestKit (3 tests)
