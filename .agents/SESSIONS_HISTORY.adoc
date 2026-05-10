@@ -134,3 +134,27 @@ Historique des sessions de developpement du plugin planner-gradle.
 *Decisions cles* :
 - Credentials deja presents dans ~/.gradle/gradle.properties
 - Warning Configuration cache — a traiter en session 005
+
+'''
+== Session 005 — PLN-8 CI decomposeIntention workflow
+
+*Date* : 2026-05-10
+*Type* : feat+ci
+*Modele* : deepseek-v4-pro (via opencode)
+*Score* : 10/10
+
+*Objectif* :
+- Créer workflow CI decomposeIntention avec pool Device Keys
+- Valider gh workflow run decompose.yml sans freeze local
+
+*Livrables* :
+- .github/workflows/decompose.yml : workflow_dispatch (intention + feature_request_id)
+- Secret OLLAMA_DEVICE_KEY_A configuré sur repo GitHub
+- Pattern éprouvé : install.sh → stop systemd → serve manuel avec notre clé SSH → pull modèles
+- Run CI validé : https://github.com/cheroliv/planner-gradle/actions/runs/25636339936 (SUCCESS, 1m51s)
+- 6 commits de debug avant stabilisation (Java 21→23, ollama serve, unauthorized fix)
+
+*Decisions cles* :
+- install.sh démarre un service systemd sans notre clé → stop + serve manuel obligatoire
+- Pull qwen3.5:397b-cloud + deepseek-v4-pro:cloud (code hardcode qwen3.5)
+- Java 23 minimum (plugin compile en Java 24, build.gradle.kts dogfoodé)

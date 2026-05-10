@@ -1,0 +1,25 @@
+= Session 005 — Palier 1 DESIGN_CI_LLM_POOL_ROTATION : Workflow CI decomposeIntention
+:author: cheroliv + opencode (deepseek-v4-pro)
+:date: 2026-05-10
+:type: feat+ci
+:score: 10/10
+
+== Objectif
+Créer `.github/workflows/decompose.yml` dans planner-gradle pour déporter `decomposeIntention`
+vers GitHub Actions sans freeze local.
+
+== Livrables
+- `.github/workflows/decompose.yml` : workflow_dispatch avec intention + feature_request_id
+- Install Ollama → setup Device Key SSH → serve manuel → pull modèles → decomposeIntention
+- Secret `OLLAMA_DEVICE_KEY_A` configuré sur le repo GitHub
+- Run validé en CI : https://github.com/cheroliv/planner-gradle/actions/runs/25636339936 (SUCCESS, 1m51s)
+
+== Décisions clés
+- install.sh + stop systemd + serve manuel : nécessaire car le service systemd ne lit pas notre clé
+- Pull qwen3.5:397b-cloud + deepseek-v4-pro:cloud (le code hardcode qwen3.5)
+- Java 23 requis (le plugin compile en Java 24, build.gradle.kts dogfoodé)
+- 6 commits de debug nécessaires avant stabilisation
+
+== Fichiers créés/modifiés
+- .github/workflows/decompose.yml (créé, 6 révisions)
+- Secrets GitHub configurés : OLLAMA_DEVICE_KEY_A
