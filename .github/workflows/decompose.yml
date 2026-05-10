@@ -14,23 +14,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Java
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
           java-version: '23'
           distribution: 'temurin'
 
-      - name: Install Ollama
-        run: curl -fsSL https://ollama.com/install.sh | sh
+      - name: Install Ollama Binary
+        run: |
+          curl -L https://ollama.com/download/ollama-linux-amd64.tgz -o /tmp/ollama.tgz
+          tar xzf /tmp/ollama.tgz -C /tmp
+          sudo mv /tmp/ollama /usr/local/bin/
+          sudo mv /tmp/lib/ollama /usr/local/lib/ollama
 
-      - name: Setup Device Key with Pool Support
+      - name: Setup Device Key
         run: |
           mkdir -p ~/.ollama
           echo "${{ secrets.OLLAMA_DEVICE_KEY_A }}" > ~/.ollama/id_ed25519
           chmod 600 ~/.ollama/id_ed25519
 
-      - name: Start Ollama Server
-        run: ollama serve &>/dev/null &
+      - name: Start Ollama Serve
+        run: |
+          OLLAMA_HOST=0.0.0.0:11434 ollama serve &>/tmp/ollama.log &
+          for i in $(seq 1 30); do
+            if curl -s http://localhost:11434/api/version >/dev/null 2>&1; then
+              echo "Ollama ready"
+              break
+            fi
+            sleep 1
+          done
 
       - name: Pull Cloud Models
         run: |
@@ -41,7 +52,6 @@ jobs:
         run: >
           ./gradlew decomposeIntention
           -Pintention="${{ github.event.inputs.intention }}"
-          -Pollama.pool.enabled=true
           -Pfeature.request.id="${{ github.event.inputs.feature_request_id }}"
         env:
           OLLAMA_DEVICE_KEY_A: ${{ secrets.OLLAMA_DEVICE_KEY_A }}
