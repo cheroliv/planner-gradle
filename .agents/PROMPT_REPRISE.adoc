@@ -1,28 +1,23 @@
 = PROMPT_REPRISE — planner-gradle
 
-_Session suivante_ : 004 — PLN-6 Publication Gradle Plugin Portal
+_Session suivante_ : 005 — Maintenance & améliorations continues
 
 '''
-== Contexte de la session 003
+== Contexte de la session 004
 
-PLN-5 Dogfooding TERMINÉ :
-- `specs/` créé avec 3 références (overview, roadmap, publication)
-- 2 x decomposeIntention exécutées → 2 plans LLM (DF-0→DF-2, PUB-0→PUB-2)
-- Analyse comparative dans `specs/04-dogfooding-analysis.adoc`
-- Dogfooding validé : le plugin planifie correctement
+PLN-6 — Publication Gradle Plugin Portal TERMINE :
+- Plugin public sur https://plugins.gradle.org/plugin/com.cheroliv.planner v0.0.1
+- 3 methodes d'application disponibles (plugins DSL, convention plugins, legacy)
+- Warning Configuration cache a resoudre
 
-PLN-0→PLN-5 et PLN-7 sont TERMINÉ.
+Roadmap EPICs :
+- PLN-0→PLN-7 sont TERMINE
 
 '''
-== Mission session 004 — PLN-6 Publication
+== Mission session 005
 
-*Objectif* : Publier le plugin sur Gradle Plugin Portal.
-
-*Sous-tâches* :
-. Vérifier credentials (GPG key, Sonatype API key)
-. `./gradlew :planner-plugin:publishToMavenLocal` (prérequis)
-. `./gradlew :planner-plugin:publishAllPublicationsToSonatypeRepository`
-. `./gradlew :planner-plugin:publishPlugins`
-. Vérifier découvrabilité sur https://plugins.gradle.org/
-
-*Attention* : Publication nécessite credentials réels → intervention humaine nécessaire.
+*Options* :
+. Corriger le warning "Configuration cache compatibility" (com.gradle.plugin-publish)
+. Mise a jour dependances (LangChain4j beta → stable)
+. Ajout fonctionnalite : filtrage par priorite, export JSON, etc.
+. Preparation release 0.0.2

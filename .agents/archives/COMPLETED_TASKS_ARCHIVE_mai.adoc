@@ -31,3 +31,11 @@
 - [x] decomposeIntention : "publier planner-plugin sur Gradle Plugin Portal" → 3 EPICs, 16 pts
 - [x] Analyse comparative : specs/04-dogfooding-analysis.adoc
 - [x] Fusioner DF/PUB en PLN-5/PLN-6 dans roadmap
+
+== PLN-6 — Publication Gradle Plugin Portal (Session 004)
+
+- [x] Verifier credentials Gradle Plugin Portal (gradle.publish.key/secret)
+- [x] publishToMavenLocal (13 tasks, BUILD SUCCESSFUL)
+- [x] publishPlugins sur Gradle Plugin Portal (12 tasks, BUILD SUCCESSFUL)
+- [x] Verifier page publique : https://plugins.gradle.org/plugin/com.cheroliv.planner
+- [x] Plugin DSL : id("com.cheroliv.planner") version "0.0.1"

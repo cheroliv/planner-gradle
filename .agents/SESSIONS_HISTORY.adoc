@@ -112,3 +112,25 @@ Historique des sessions de developpement du plugin planner-gradle.
 - Faux-positif RAG : LLM propose tests deja couverts par PLN-7
 - Publication plan couvre bien la chaine signing → Sonatype → Portal → tag
 - Recommandation : fusionner DF/PUB en PLN-5/PLN-6 pour coherence roadmap
+
+'''
+== Session 004 — PLN-6 Publication Gradle Plugin Portal
+
+*Date* : 2026-05-10
+*Type* : feat (publication)
+*Modele* : deepseek-v4-pro (via opencode)
+*Score* : 10/10
+
+*Objectif* :
+- Publier le plugin planner-gradle sur le Gradle Plugin Portal public
+
+*Livrables* :
+- publishToMavenLocal : OK (13 tasks)
+- publishPlugins : OK (12 tasks, BUILD SUCCESSFUL)
+- Plugin visible sur https://plugins.gradle.org/plugin/com.cheroliv.planner
+- Version 0.0.1, tags #planning #llm #langchain4j #agile #backlog
+- Plugin DSL fonctionnel : id("com.cheroliv.planner") version "0.0.1"
+
+*Decisions cles* :
+- Credentials deja presents dans ~/.gradle/gradle.properties
+- Warning Configuration cache — a traiter en session 005
