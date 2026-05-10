@@ -1,0 +1,58 @@
+name: Decompose Intention
+on:
+  workflow_dispatch:
+    inputs:
+      intention:
+        description: 'Intention en langage naturel'
+        required: true
+      feature_request_id:
+        description: 'ID de la Feature Request associée (optionnel)'
+        required: false
+jobs:
+  decompose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Install Ollama
+        run: curl -fsSL https://ollama.com/install.sh | sh
+
+      - name: Setup Device Key with Pool Support
+        run: |
+          mkdir -p ~/.ollama
+          echo "${{ secrets.OLLAMA_DEVICE_KEY_A }}" > ~/.ollama/id_ed25519
+          chmod 600 ~/.ollama/id_ed25519
+
+      - name: Pull Cloud Model
+        run: ollama pull deepseek-v4-pro:cloud
+
+      - name: Decompose Intention
+        run: >
+          ./gradlew decomposeIntention
+          -Pintention="${{ github.event.inputs.intention }}"
+          -Pollama.pool.enabled=true
+          -Pfeature.request.id="${{ github.event.inputs.feature_request_id }}"
+        env:
+          OLLAMA_DEVICE_KEY_A: ${{ secrets.OLLAMA_DEVICE_KEY_A }}
+          OLLAMA_DEVICE_KEY_B: ${{ secrets.OLLAMA_DEVICE_KEY_B }}
+
+      - name: Commit Plan to Repository
+        if: ${{ github.event.inputs.feature_request_id != '' }}
+        run: |
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@cheroliv.com"
+          git add features/plans/
+          git commit -m "ci: plan for ${{ github.event.inputs.feature_request_id }}" || true
+          git push
+
+      - name: Upload Plan Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: plan-${{ github.run_id }}
+          path: build/planning/*.json
