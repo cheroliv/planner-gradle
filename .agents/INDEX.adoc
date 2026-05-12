@@ -4,8 +4,10 @@
 _Regles absolues_ : voir `AGENT.adoc`
 _DAG_ : N2 — Plugin Gradle de planification (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-05-10
-_Session terminee_ : 005 — PLN-8 CI decomposeIntention workflow
+_Derniere mise a jour_ : 2026-05-12
+_Session terminee_ : 006 — Code Review Globale (audit passif)
+_Sessions precedent_ : 005/005 ✅ — Tous les EPICs PLN terminés
+_Prochaine session_ : 007 — Maintenance & ameliorations continues
 
 '''
 == REGLES ABSOLUES
@@ -21,6 +23,7 @@ _Session terminee_ : 005 — PLN-8 CI decomposeIntention workflow
 
 |===
 | # | Date | Type | Sujet | Score
+| 006 | 2026-05-12 | chore | Code Review Globale — Audit passif, MAJ portefeuille 6→8 boroughs | 10/10
 | 005 | 2026-05-10 | feat+ci | PLN-8 — CI decomposeIntention : workflow_dispatch + OLLAMA_DEVICE_KEY_A + serve manuel, run CI 25636339936 SUCCESS | 10/10
 | 004 | 2026-05-10 | feat | PLN-6 — Publication Gradle Plugin Portal : publishPlugins, version 0.0.1, page publique | 10/10
 | 003 | 2026-05-09 | feat | PLN-5 — Dogfooding : specs/ creés, 2x decomposeIntention, analyse comparative | 10/10
@@ -67,10 +70,13 @@ _Session terminee_ : 005 — PLN-8 CI decomposeIntention workflow
 
 |===
 | Projet | Chemin | Sessions | Derniere maj
-| planner-gradle | `foundry/OSS/planner-gradle/` | 3 | 2026-05-07
-| codex-gradle | `foundry/OSS/codex-gradle/` | 4 | 2026-05-07
-| codebase-gradle | `foundry/OSS/codebase-gradle/` | 5 | 2026-05-07
-| quizz-benchmark | `foundry/OSS/quizz-benchmark-gradle/quizz-benchmark-plugin/` | 3 | 2026-05-07
+| planner-gradle | `foundry/OSS/planner-gradle/` | 5 | 2026-05-11
+| codex-gradle | `foundry/OSS/codex-gradle/` | 17 | 2026-05-11
+| codebase-gradle | `foundry/OSS/codebase-gradle/` | 21 | 2026-05-11
+| quizz-benchmark | `foundry/OSS/quizz-benchmark-gradle/quizz-benchmark-plugin/` | 6 | 2026-05-11
+| engine | `foundry/OSS/engine/` | 10 | 2026-05-11
+| waiter-gradle | `foundry/OSS/waiter-gradle/` | 0 (bootstrap) | 2026-05-11
+| training-gradle | `foundry/OSS/training-gradle/` | 0 (bootstrap) | 2026-05-12
 | magic_stick | `foundry/OSS/magic_stick/` | 69 | 2026-05-07
-| magic-stick (doc site) | `office/sites/magic-stick/` | 1 | 2026-05-07
+| magic-stick (doc site) | `office/sites/magic-stick/` | 4 | 2026-05-11
 |===

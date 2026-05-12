@@ -1,0 +1,19 @@
+= Session 006 — MAJ Portefeuille (Code Review Globale)
+:date: 2026-05-12
+:type: chore
+:score: 10/10
+
+== Contexte
+
+Code review globale des 8 boroughs. INDEX.adoc déjà mis à jour par le hook de fermeture
+précédent (portefeuille 6→8 boroughs). Cette session confirme l'état.
+
+== Actions
+
+. Vérifié INDEX.adoc : portefeuille complet (8 boroughs + magic-stick doc)
+. `AGENTS.adoc` racine workspace mis à jour avec la session 012-engine
+. Build compile OK (dernière vérification)
+
+== Résultat
+
+Projet stable. Tous les EPICs PLN TERMINÉS (0→8). Prêt pour MVP0.

@@ -1,20 +1,19 @@
 = PROMPT_REPRISE — planner-gradle
 
-_Session suivante_ : 005 — Maintenance & améliorations continues
+_Session suivante_ : 007 — Maintenance & ameliorations continues
 
 '''
-== Contexte de la session 004
+== Contexte de la session 006
 
-PLN-6 — Publication Gradle Plugin Portal TERMINE :
-- Plugin public sur https://plugins.gradle.org/plugin/com.cheroliv.planner v0.0.1
-- 3 methodes d'application disponibles (plugins DSL, convention plugins, legacy)
-- Warning Configuration cache a resoudre
+Code Review Globale (audit passif) :
+- MAJ portefeuille 6→8 boroughs.
+- PLN-0→PLN-8 TERMINES (5 sessions de dev, 1 CI, 1 review).
 
 Roadmap EPICs :
-- PLN-0→PLN-7 sont TERMINE
+- PLN-0→PLN-8 sont TERMINE
 
 '''
-== Mission session 005
+== Mission session 007
 
 *Options* :
 . Corriger le warning "Configuration cache compatibility" (com.gradle.plugin-publish)

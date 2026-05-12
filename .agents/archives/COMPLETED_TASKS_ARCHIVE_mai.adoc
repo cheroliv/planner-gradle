@@ -1,6 +1,11 @@
 = COMPLETED_TASKS_ARCHIVE — Mai 2026
 
 '''
+== Code Review Globale (Session 006)
+
+- [x] Audit passif planner-gradle : PLN-0→8 TERMINE, CI decomposeIntention OK, Publication Plugin Portal OK
+- [x] MAJ portefeuille 6→8 boroughs
+
 == PLN-7 — Tests unitaires pipeline LLM (Session 002)
 
 - [x] Rendre buildPrompt internal (testable)

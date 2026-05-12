@@ -158,3 +158,9 @@ Historique des sessions de developpement du plugin planner-gradle.
 - install.sh démarre un service systemd sans notre clé → stop + serve manuel obligatoire
 - Pull qwen3.5:397b-cloud + deepseek-v4-pro:cloud (code hardcode qwen3.5)
 - Java 23 minimum (plugin compile en Java 24, build.gradle.kts dogfoodé)
+
+== Session 006 — Code Review Globale
+*Date*: 2026-05-12
+*Type*: chore
+*Score*: 10/10
+*Résumé*: MAJ portefeuille 6→8 boroughs, audit passif.
