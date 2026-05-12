@@ -77,6 +77,6 @@ _Prochaine session_ : 007 — Maintenance & ameliorations continues
 | engine | `foundry/OSS/engine/` | 10 | 2026-05-11
 | waiter-gradle | `foundry/OSS/waiter-gradle/` | 0 (bootstrap) | 2026-05-11
 | training-gradle | `foundry/OSS/training-gradle/` | 0 (bootstrap) | 2026-05-12
-| magic_stick | `foundry/OSS/magic_stick/` | 69 | 2026-05-07
+| magic-stick | `foundry/OSS/magic-stick/` | 69 | 2026-05-07
 | magic-stick (doc site) | `office/sites/magic-stick/` | 4 | 2026-05-11
 |===
