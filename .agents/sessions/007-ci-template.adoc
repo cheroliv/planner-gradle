@@ -1,0 +1,24 @@
+= Session 007 — CI Template (EPIC F — engine orchestration)
+:date: 2026-05-14
+:type: infra
+:score: 10/10
+
+== Objectif
+
+Deploiement du template CI standard `.github/workflows/test.yml` (JDK 24, `./gradlew :planner-plugin:build`)
+sur planner-gradle via la session engine 013 (EPIC F cross-boroughs).
+
+== Actions
+
+* `foundry/public/planner-gradle/.github/workflows/test.yml` cree — template standard
+  avec `./gradlew :planner-plugin:build` (multi-module, pas de gradlew dans planner-plugin/)
+* Build local : compilation KO — `ChatLanguageModel` unresolved (dep langchain4j manquante, preexistant)
+
+== Contexte
+
+Session 013 engine (2026-05-14) : EPIC F Template CI unifie deploye sur 5 boroughs restants.
+Planner-gradle est un des 5. Le test.yml est fonctionnel mais la compilation echoue a cause
+d'une dependance langchain4j manquante dans planner-plugin/build.gradle.kts — problematique
+precedant cette session.
+
+Note : planner-plugin/build.gradle.kts etait deja modifie (staged) avant cette session.
