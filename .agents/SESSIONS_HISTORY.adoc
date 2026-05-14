@@ -2,6 +2,8 @@
 
 Historique des sessions de developpement du plugin planner-gradle.
 
+_Session 008_ (2026-05-14) : Fix compilation langchain4j — ChatLanguageModel renommé en ChatModel dans langchain4j 1.14.1, 2 lignes corrigées dans OllamaBridge.kt ✅
+
 _Session 007_ (2026-05-14) : CI Template .github/workflows/test.yml (+:planner-plugin:build), EPIC F cross-boroughs, compilation KO preexistante langchain4j ✅
 
 '''

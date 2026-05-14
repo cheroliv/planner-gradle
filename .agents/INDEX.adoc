@@ -5,9 +5,9 @@ _Regles absolues_ : voir `AGENT.adoc`
 _DAG_ : N2 — Plugin Gradle de planification (Regle 4bis)
 
 _Derniere mise a jour_ : 2026-05-14
-_Session terminee_ : 007 — CI Template (EPIC F — engine orchestration)
-_Sessions precedent_ : 006/005 ✅ — Tous les EPICs PLN terminés
-_Prochaine session_ : 008 — Fix compilation langchain4j manquant
+_Session terminee_ : 008 — Fix compilation langchain4j manquant ✅
+_Sessions precedent_ : 007/006/005 ✅ — Tous les EPICs PLN terminés
+_Prochaine session_ : 009
 
 '''
 == REGLES ABSOLUES
@@ -23,6 +23,7 @@ _Prochaine session_ : 008 — Fix compilation langchain4j manquant
 
 |===
 | # | Date | Type | Sujet | Score
+| 008 | 2026-05-14 | fix | Compilation langchain4j — ChatLanguageModel → ChatModel (2 lignes) | 10/10
 | 007 | 2026-05-14 | infra | CI Template — .github/workflows/test.yml (+:planner-plugin:build), EPIC F cross-boroughs, compilation KO preexistante | 10/10
 | 006 | 2026-05-12 | chore | Code Review Globale — Audit passif, MAJ portefeuille 6→8 boroughs | 10/10
 | 005 | 2026-05-10 | feat+ci | PLN-8 — CI decomposeIntention : workflow_dispatch + OLLAMA_DEVICE_KEY_A + serve manuel, run CI 25636339936 SUCCESS | 10/10

@@ -1,0 +1,23 @@
+= Session 008 — Fix compilation langchain4j manquant
+
+*Date* : 2026-05-14
+*Type* : fix (compilation)
+*Score* : 10/10
+
+*Objectif* :
+- Corriger la compilation cassée par le renommage `ChatLanguageModel` → `ChatModel`
+  dans langchain4j 1.14.1
+
+*Cause* :
+- LangChain4j 1.14.1 a renommé l'interface `ChatLanguageModel` en `ChatModel`
+  (dans `dev.langchain4j.model.chat`)
+- `OllamaBridge.kt` importait encore l'ancien nom → compilation KO
+
+*Fix* :
+- `OllamaBridge.kt` : `ChatLanguageModel` → `ChatModel` (import + type retour)
+- `build.gradle.kts` : restauré syntaxe standard `version` (pas `.version()`)
+- Compilation OK, publishToMavenLocal OK
+
+*Fichiers modifies* :
+- `planner-plugin/src/main/kotlin/planning/OllamaBridge.kt` — 2 lignes
+- `planner-plugin/build.gradle.kts` — rollback syntaxe

@@ -44,3 +44,9 @@
 - [x] publishPlugins sur Gradle Plugin Portal (12 tasks, BUILD SUCCESSFUL)
 - [x] Verifier page publique : https://plugins.gradle.org/plugin/com.cheroliv.planner
 - [x] Plugin DSL : id("com.cheroliv.planner") version "0.0.1"
+
+== Fix Compilation LangChain4j (Session 008)
+
+- [x] Remplacer `ChatLanguageModel` par `ChatModel` (import + type retour) dans OllamaBridge.kt
+- [x] Restaurer syntaxe `version` dans build.gradle.kts (accident session 007)
+- [x] Compilation OK, publishToMavenLocal OK
